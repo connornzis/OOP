@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int Sum(int a, int b);
+int Sum(int a, int b, int c);
+
+int a = 3;
+int b = 6;
+int c = 7;
+
+int Sum(int a, int b) {
+    return a + b;
+}
+
+int Sum(int a, int b, int c) {
+    return a + b + c;
+}
+
+int main() {
+    int twoParamSum = Sum(a, b);
+    int threeParamSum = Sum(a, b, c);
+
+    cout << "Sum of a + b = " << twoParamSum << endl;
+    cout << "Sum of a + b + c = " << threeParamSum << endl;
+
+    return 0;
+}
