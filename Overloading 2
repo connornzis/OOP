@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int Volume(double r, int h);
+int Volume(int a);
+
+
+
+int Volume(double r, int h) {
+	return (3.14 * r * h);
+}
+
+
+double r = 12;
+int h = 12;
+int a = 12;
+
+int Volume(int a) {
+	return (a * a * a);
+}
+
+int main() {
+	int onePar = Volume(r, h);
+	int twoPar = Volume(a); 
+
+	cout << "Volume of circle = " << onePar << endl;
+	cout << "Volume of cube = " << twoPar << endl;
+}
