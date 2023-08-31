@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+class Baseclass {
+public:
+    int var_base;
+    virtual void display() {
+        cout << "Display Baseclass variable: " << var_base << endl;
+    }
+};
+
+class Derivedclass : public Baseclass {
+public:
+    int var_derived;
+    void display() {
+        cout << "Display Derivedclass variable: " << var_derived << endl;
+    }
+};
+
+int main() {
+    Baseclass* base_class_pointer;
+    Baseclass obj_base;
+
+    Derivedclass obj_derived;
+    obj_derived.var_base = 20; // Assign a value to the base class variable
+    obj_derived.var_derived = 30;
+
+    base_class_pointer = &obj_derived;
+
+    base_class_pointer->display(); // Calls the display() method of the Baseclass
+
+    return 0;
+}
