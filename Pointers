@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Media {
+public:
+    virtual void putdata() const = 0;
+};
+
+class Book : public Media {
+private:
+    string title;
+    float price;
+public:
+    void getdata() {
+        cout << "Enter book title: ";
+        getline(cin, title);
+        cout << "Enter book price: ";
+        cin >> price;
+        cin.ignore(); // Clear the newline character
+    }
+
+    void putdata() const {
+        cout << "Book Title: " << title << endl;
+        cout << "Book Price: " << price << endl;
+    }
+};
+
+class Tape : public Media {
+private:
+    string title;
+    float playtime;
+public:
+    void getdata() {
+        cout << "Enter tape title: ";
+        getline(cin, title);
+        cout << "Enter tape playtime: ";
+        cin >> playtime;
+        cin.ignore(); // Clear the newline character
+    }
+
+    void putdata() const {
+        cout << "Tape Title: " << title << endl;
+        cout << "Tape Playtime: " << playtime << endl;
+    }
+};
+
+int main() {
+    const int MAX_MEDIA = 5; // Maximum number of media objects
+    Media* mediaArray[MAX_MEDIA];
+
+    int numMedia;
+    cout << "Enter the number of media objects (books and tapes) to enter: ";
+    cin >> numMedia;
+    cin.ignore(); // Clear the newline character
+
+    for (int i = 0; i < numMedia; i++) {
+        char choice;
+        cout << "Enter 'B' for book or 'T' for tape: ";
+        cin >> choice;
+        cin.ignore(); // Clear the newline character
+
+        if (choice == 'B') {
+            mediaArray[i] = new Book;
+        } else if (choice == 'T') {
+            mediaArray[i] = new Tape;
+        } else {
+            cout << "Invalid choice. Skipping this media object." << endl;
+            continue;
+        }
+
+        mediaArray[i]->getdata();
+    }
+
+    cout << "Entered media data:" << endl;
+    for (int j = 0; j < numMedia; j++) {
+        mediaArray[j]->putdata();
+        delete mediaArray[j]; // Free allocated memory
+    }
+
+    return 0;
+}
