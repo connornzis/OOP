@@ -3,7 +3,7 @@ using namespace std;
  
 class Base {
 
-    int x;
+
 public:
     virtual void Car() = 0;
 
@@ -12,10 +12,13 @@ public:
 class Derived : public Base {
 public:
     void Car() {
-        cout << "I like Ferraris " << endl;
+        cout << "Nice! I like Ferraris " << endl;
     }
 };
 int main() {
+    string car1;
+    cout << "What car do you like ? " << endl;
+    cin >> car1;
     Derived d;
 
     d.Car();
